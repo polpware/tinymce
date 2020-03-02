@@ -11,12 +11,12 @@ import { Dialog } from 'tinymce/core/api/ui/Ui';
 import { getCellClassList } from '../api/Settings';
 import * as Helpers from './Helpers';
 
-const getClassList = (editor: Editor): Optional<Dialog.SelectBoxSpec> => {
+const getClassList = (editor: Editor): Optional<Dialog.ListBoxSpec> => {
   const classes = Helpers.buildListItems(getCellClassList(editor));
   if (classes.length > 0) {
     return Optional.some({
       name: 'class',
-      type: 'selectbox',
+      type: 'listbox',
       label: 'Class',
       items: classes
     });
