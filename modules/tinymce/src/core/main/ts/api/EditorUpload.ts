@@ -77,17 +77,15 @@ const EditorUpload = function (editor: Editor): EditorUpload {
     return content;
   };
 
-  const replaceImageUrl = function (content: string, targetUrl: string, replacementUrl: string): string {
-    content = replaceString(content, 'src="' + targetUrl + '"', 'src="' + replacementUrl + '"');
-    content = replaceString(content, 'data-mce-src="' + targetUrl + '"', 'data-mce-src="' + replacementUrl + '"');
+  const replaceImageUrl = (content: string, targetUrl: string, replacementUrl: string, usePlaceholder?: boolean): string => {
+    if (usePlaceholder) {
+      const placeholder = Settings.getPlaceholder(editor);
 
-    return content;
-  };
+      content = replaceString(content, 'src="' + targetUrl + '"', 'src="' + replacementUrl + '" data-mce-placeholder="' + placeholder + '" ');
+    } else {
+      content = replaceString(content, 'src="' + targetUrl + '"', 'src="' + replacementUrl + '"');
+    }
 
-  const replaceImageUrlForPlaceholder = (content: string, targetUrl: string, replacementUrl: string): string => {
-    const placeholder = Settings.getPlaceholder(editor);
-
-    content = replaceString(content, 'src="' + targetUrl + '"', 'src="' + replacementUrl + '" data-mce-placeholder="' + placeholder + '" ');
     content = replaceString(content, 'data-mce-src="' + targetUrl + '"', 'data-mce-src="' + replacementUrl + '"');
 
     return content;
@@ -152,7 +150,8 @@ const EditorUpload = function (editor: Editor): EditorUpload {
             replaceImageUriInView(image, uploadInfo.url);
           } else if (uploadInfo.error) {
             if (uploadInfo.error.options.remove) {
-              replaceUrlInUndoStack(image.getAttribute('src'), Env.transparentSrc, replaceImageUrlForPlaceholder);
+              replaceUrlInUndoStack(image.getAttribute('src'), Env.transparentSrc, (content: string, targetUrl: string, replacementUrl: string) =>
+                replaceImageUrl(content, targetUrl, replacementUrl, true));
               imagesToRemove.push(image);
             }
 
