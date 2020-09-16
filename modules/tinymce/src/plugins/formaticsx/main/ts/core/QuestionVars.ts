@@ -1,5 +1,5 @@
 
 export interface QuestionVarSpec {
-    text: string;
-    value: string;
+  text: string;
+  value: string;
 }

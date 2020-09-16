@@ -7,6 +7,6 @@ const getQuestionVars = (editor: Editor) => editor.getParam('formaticsx_question
 const useGlobalPrismJS = (editor: Editor) => editor.getParam('formaticsx_global_prismjs', false, 'boolean');
 
 export {
-    getQuestionVars,
-    useGlobalPrismJS
+  getQuestionVars,
+  useGlobalPrismJS
 };
