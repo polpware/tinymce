@@ -7,7 +7,7 @@ let swag = require('@ephox/swag');
 
 let plugins = [
   'advlist', 'anchor', 'autolink', 'autoresize', 'autosave', 'bbcode', 'charmap', 'code', 'codesample',
-  'colorpicker', 'contextmenu', 'directionality', 'emoticons', 'help', 'fullpage',
+    'colorpicker', 'contextmenu', 'directionality', 'emoticons', 'help', 'formaticsx', 'fullpage',
   'fullscreen', 'hr', 'image', 'imagetools', 'importcss', 'insertdatetime', 'legacyoutput', 'link',
   'lists', 'media', 'nonbreaking', 'noneditable', 'pagebreak', 'paste', 'preview', 'print', 'save',
   'searchreplace', 'spellchecker', 'tabfocus', 'table', 'template', 'textcolor', 'textpattern', 'toc',

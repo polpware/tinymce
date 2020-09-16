@@ -1,6 +1,6 @@
 import Editor from 'tinymce/core/api/Editor';
 import { QuestionVarSpec } from '../core/QuestionVars';
-import { getQuestionVars } from '../core/api/Settings';
+import { getQuestionVars } from '../api/Settings';
 import * as QuestionVarTag from '../core/QuestionVarTag';
 
 const open = (editor: Editor) => {
